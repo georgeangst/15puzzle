@@ -3,13 +3,17 @@ html {
   height: 100%;
   position: relative;
 }
-.start-container {
+.puzzle-wrapper {
+  width: 100%;
+  height: 100%;
+}
+.puzzle-wrapper .start-container,
+.puzzle-wrapper .win-container {
   position: absolute;
   width: 100%;
   height: 100%;
-  background-color: rgba(255,255,255,0.8);
+  background-color: #fff;
   text-align: center;
-  font-size: 100px;
   padding-top: 280px;
   color: #58bdec;
   box-sizing: border-box;
@@ -17,20 +21,37 @@ html {
   font-family: arial, sans-serif;
   cursor: pointer;
 }
-.game-container {
+.puzzle-wrapper .start-container .title,
+.puzzle-wrapper .win-container .title {
+  font-size: 100px;
+}
+.puzzle-wrapper .win-container {
+  display: none;
+}
+.puzzle-wrapper .win-container .final-info {
+  font-size: 30px;
+  line-height: 40px;
+}
+.puzzle-wrapper .game-container {
   padding: 70px 0;
   margin: 0 auto;
   width: 445px;
   font-family: arial, sans-serif;
   position: relative;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
-.game-title {
+.puzzle-wrapper .game-title {
   color: #58bdec;
   margin-bottom: 25px;
   font-size: 21px;
   text-transform: uppercase;
 }
-.puzzle-area {
+.puzzle-wrapper .puzzle-area {
   width: 100%;
   height: 445px;
   border: 1px solid #168eb8;
@@ -39,14 +60,14 @@ html {
   box-sizing: border-box;
   cursor: default;
 }
-.puzzle-number {
+.puzzle-wrapper .puzzle-number {
   width: 25%;
   height: 25%;
   float: left;
   padding: 3px;
   box-sizing: border-box;
 }
-.puzzle-number i {
+.puzzle-wrapper .puzzle-number i {
   text-align: center;
   color: #fff;
   font-size: 50px;
@@ -57,11 +78,11 @@ html {
   height: 100%;
   display: inline-block;
 }
-.puzzle-number i:hover {
+.puzzle-wrapper .puzzle-number i:hover {
   background-color: #168eb8;
   cursor: pointer;
 }
-.puzzle-zero {
+.puzzle-wrapper .puzzle-zero {
   width: 25%;
   height: 25%;
   float: left;
@@ -69,7 +90,7 @@ html {
   display: inline-block;
   box-sizing: border-box;
 }
-.puzzle-zero i {
+.puzzle-wrapper .puzzle-zero i {
   box-sizing: border-box;
   color: #fff;
   border: 1px solid #dedede;
@@ -79,16 +100,16 @@ html {
   height: 100%;
   display: inline-block;
 }
-.additional-game-info {
+.puzzle-wrapper .additional-info {
   color: #168ec0;
   position: absolute;
   bottom: 0;
   text-transform: uppercase;
   font-size: 18px;
 }
-.puzzle-timer {
+.puzzle-wrapper .puzzle-timer {
   left: 0;
 }
-.puzzle-moves {
+.puzzle-wrapper .puzzle-moves {
   right: 0;
 }

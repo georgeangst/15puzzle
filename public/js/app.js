@@ -18,8 +18,7 @@ $(function() {
 
 		this.shuffleArray = function() {
 
-			var array = this.currentState,
-				currentIndex = array.length,
+			var	currentIndex = this.currentState.length,
 				temporaryValue,
 				randomIndex;
 
@@ -31,13 +30,12 @@ $(function() {
 				currentIndex -= 1;
 
 				// And swap it with the current element.
-				temporaryValue = array[currentIndex];
-				array[currentIndex] = array[randomIndex];
-				array[randomIndex] = temporaryValue;
+				temporaryValue = this.currentState[currentIndex];
+				this.currentState[currentIndex] = this.currentState[randomIndex];
+				this.currentState[randomIndex] = temporaryValue;
 
 			}
 
-			return array;
 		}
 
 		this.getReadyElements = function() {
@@ -53,8 +51,6 @@ $(function() {
 				(zeroIndex + 4) <= 16 ? readyElementsIndex.push(zeroIndex + 4) : readyElementsIndex.push(null);
 				// get index of left element
 				(zeroIndex % 4) !== 1 ? readyElementsIndex.push(zeroIndex - 1) : readyElementsIndex.push(null);
-
-				// console.log(readyElementsIndex);
 
 				$('.puzzle-area >div').each(function() {
 
@@ -75,7 +71,9 @@ $(function() {
 			// swap elements
 
 			this.moves += 1;
-			$('#moves-value').html(this.moves);
+			$('#moves-value').html('moves ' + this.moves);
+
+			this.checkWin();
 
 			this.init();
 
@@ -83,15 +81,13 @@ $(function() {
 
 		this.reDraw = function() {
 
-			var array = this.currentState;
-
 			$('.puzzle-area').empty();
 
 			for (var i = 0; i < 16; i++ ) {
 
-				var currentClass = array[i] === 0 ? 'puzzle-zero' : 'puzzle-number';
+				var currentClass = this.currentState[i] === 0 ? 'puzzle-zero' : 'puzzle-number';
 
-				$('.puzzle-area').append('<div class="' + currentClass + '"><i>' + array[i] + '</i></div>');
+				$('.puzzle-area').append('<div class="' + currentClass + '"><i>' + this.currentState[i] + '</i></div>');
 
 			}
 
@@ -103,9 +99,33 @@ $(function() {
 
 				this.initArray();
 
-				this.currentState = this.shuffleArray();
+				this.shuffleArray();
 
 				this.gameStarted = true;
+
+				Array.prototype.equals = function (array) {
+				    // if the other array is a falsy value, return
+				    if (!array)
+				        return false;
+
+				    // compare lengths
+				    if (this.length != array.length)
+				        return false;
+
+				    for (var i = 0, l=this.length; i < l; i++) {
+				        // Check if we have nested arrays
+				        if (this[i] instanceof Array && array[i] instanceof Array) {
+				            // recurse into the nested arrays
+				            if (!this[i].equals(array[i]))
+				                return false;       
+				        }           
+				        else if (this[i] != array[i]) { 
+				            // Warning - two different object instances will never be equal: {x:20} != {x:20}
+				            return false;   
+				        }           
+				    }       
+				    return true;
+				}  
 
 			}
 
@@ -120,6 +140,17 @@ $(function() {
 				that.performClick(e);
 
 			});
+
+		}
+
+		this.checkWin = function() {
+			var winSituation = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 0];
+
+			if (this.currentState.equals(winSituation)) {
+				$('#total-moves').html('Total moves: ' + this.moves);
+				$('#total-time').html('Total time: ' + this.timer);
+				$('.win-container').fadeIn(100);
+			}
 
 		}
 
@@ -149,7 +180,7 @@ $(function() {
 	var game = new PuzzleGame();
 
 	$('.start-container').click(function(){
-		$(this).fadeOut();
+		$(this).fadeOut(100);
 		game.init();
 	})
 
