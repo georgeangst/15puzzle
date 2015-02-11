@@ -1,0 +1,20 @@
+doctype html
+html(lang="en")
+	head
+		meta(charset='UTF-8')
+		title 15 puzzle
+		link(rel='stylesheet', href='style/reset.css')
+		link(rel='stylesheet' href='style/styles.css')
+	body
+		.game-container
+			.game-title Barley-Break
+			.puzzle-area
+			.puzzle-timer.additional-game-info
+				span time&nbsp;
+				span#timer-value 00:00:00
+			.puzzle-moves.additional-game-info
+				span moves&nbsp;
+				span#moves-value 0
+		#timer
+		script(src='js/jquery-2.1.3.min.js')
+		script(src='js/app.js')

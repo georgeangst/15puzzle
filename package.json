@@ -4,6 +4,7 @@
   "main": "server.js",
   "dependencies": {
     "express": "*",
-    "jade": "*"
+    "jade": "*",
+    "stylus": "*"
   }
 }

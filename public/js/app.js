@@ -8,14 +8,12 @@ $(function() {
 		this.moves = 0;
 		this.initArray = function() {
 
-			var array = [],
-				totalElements = 16;
+			var	totalElements = 16;
 
 			for (var i = 0; i < totalElements; i ++) {
-				array.push(i);
+				this.currentState.push(i);
 			}
 
-			this.currentState = array;
 		}
 
 		this.shuffleArray = function() {
@@ -70,8 +68,7 @@ $(function() {
 
 		this.performClick = function(e) {
 			var elementToMoveIndex = $(e.target).index(),
-				zeroIndex = this.currentState.indexOf(0),
-				temp = elementToMoveIndex;
+				zeroIndex = this.currentState.indexOf(0);
 
 			this.currentState[zeroIndex] = this.currentState[elementToMoveIndex];
 			this.currentState[elementToMoveIndex] = 0;
@@ -94,7 +91,7 @@ $(function() {
 
 				var currentClass = array[i] === 0 ? 'puzzle-zero' : 'puzzle-number';
 
-				$('.puzzle-area').append('<div class="' + currentClass + '">' + array[i] + '</div>');
+				$('.puzzle-area').append('<div class="' + currentClass + '"><i>' + array[i] + '</i></div>');
 
 			}
 
@@ -126,10 +123,50 @@ $(function() {
 
 		}
 
+		this.formatTimer = function(seconds) {
+				var h = Math.floor(seconds / 3600),
+						m = Math.floor(seconds / 60) % 60,
+						s = seconds % 60;
+				if (h < 10) h = "0" + h;
+				if (m < 10) m = "0" + m;
+				if (s < 10) s = "0" + s;
+				return h + ":" + m + ":" + s;
+		}
+		var count = 0;
+		var counter = setInterval(this.startTimer, 1000);
+
+		this.startTimer = function() {
+				count++;
+				if (count < 0) return clearInterval(counter);
+				$('#timer-value ').html(this.formatTimer(count));
+				document.getElementById('timer').innerHTML = this.formatTimer(count);
+		}
+
+		this.startTimer();
+
 	};
 
 	var game = new PuzzleGame();
 
 	game.init();
+
+	// function formatTime(seconds) {
+	//     var h = Math.floor(seconds / 3600),
+	//         m = Math.floor(seconds / 60) % 60,
+	//         s = seconds % 60;
+	//     if (h < 10) h = "0" + h;
+	//     if (m < 10) m = "0" + m;
+	//     if (s < 10) s = "0" + s;
+	//     return h + ":" + m + ":" + s;
+	// }
+	// var count = 62;
+	// var counter = setInterval(timer, 1000);
+
+	// function timer() {
+	//     count--;
+	//     if (count < 0) return clearInterval(counter);
+	//     document.getElementById('timer').innerHTML = formatTime(count);
+	// }
+
 
 });
