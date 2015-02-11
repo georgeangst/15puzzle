@@ -16,20 +16,27 @@ html {
   height: 100%;
   background-color: #fff;
   text-align: center;
-  padding-top: 280px;
+  padding-top: 240px;
   color: #58bdec;
   box-sizing: border-box;
   z-index: 10;
   font-family: arial, sans-serif;
-  cursor: pointer;
 }
 .puzzle-wrapper .start-container .title,
 .puzzle-wrapper .win-container .title {
   font-size: 100px;
 }
+.puzzle-wrapper .start-container {
+  cursor: pointer;
+}
 .puzzle-wrapper .win-container .final-info {
   font-size: 30px;
   line-height: 40px;
+}
+.puzzle-wrapper .win-container #game-restart {
+  text-decoration: underline;
+  cursor: pointer;
+  color: #777;
 }
 .puzzle-wrapper .game-container {
   padding: 50px 15px;

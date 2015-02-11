@@ -14,13 +14,16 @@ html(lang='en')
 				.title win
 				#total-moves.final-info 234
 				#total-time.final-info 32:34:54
+				#game-restart.final-info restart
 			.game-container.hidden
 				.game-title Barley-Break
 				.puzzle-area
 				.puzzle-timer.additional-info
-					span#timer-value 00:00:00
+					span time&nbsp;
+					span#timer-value 00:00
 				.puzzle-moves.additional-info
 					span#moves-value
 			#timer
-		script(src='js/jquery-2.1.3.min.js')
+		script(src='lib/jquery-2.1.3.min.js')
+		script(src='lib/timer.jquery.min.js')
 		script(src='js/app.js')
