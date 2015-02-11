@@ -52,7 +52,7 @@ $(function() {
 				// get index of right element
 				(zeroIndex % 4) !== 0 ? readyElementsIndex.push(zeroIndex + 1) : readyElementsIndex.push(null);
 				// get index of bottom element
-				(zeroIndex + 4) <= 15 ? readyElementsIndex.push(zeroIndex + 4) : readyElementsIndex.push(null);
+				(zeroIndex + 4) <= 16 ? readyElementsIndex.push(zeroIndex + 4) : readyElementsIndex.push(null);
 				// get index of left element
 				(zeroIndex % 4) !== 1 ? readyElementsIndex.push(zeroIndex - 1) : readyElementsIndex.push(null);
 
@@ -76,6 +76,9 @@ $(function() {
 			this.currentState[zeroIndex] = this.currentState[elementToMoveIndex];
 			this.currentState[elementToMoveIndex] = 0;
 			// swap elements
+
+			this.moves += 1;
+			$('#moves-value').html(this.moves);
 
 			this.init();
 
