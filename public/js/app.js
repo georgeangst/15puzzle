@@ -92,10 +92,9 @@ $(function() {
 
 			for (var i = 0; i < 16; i++ ) {
 
-				var currentId = array[i],
-					currentClass = array[i] === 0 ? 'puzzle-zero' : 'puzzle-number';
+				var currentClass = array[i] === 0 ? 'puzzle-zero' : 'puzzle-number';
 
-				$('.puzzle-area').append('<div id="id' + currentId + '" class="' + currentClass + '">' + currentId + '</div>');
+				$('.puzzle-area').append('<div class="' + currentClass + '">' + array[i] + '</div>');
 
 			}
 
@@ -107,11 +106,10 @@ $(function() {
 
 				this.initArray();
 
-				var array = this.shuffleArray();
-
-				this.currentState = array;
+				this.currentState = this.shuffleArray();
 
 				this.gameStarted = true;
+
 			}
 
 			this.reDraw();
@@ -125,7 +123,6 @@ $(function() {
 				that.performClick(e);
 
 			});
-			// console.log(array);
 
 		}
 
