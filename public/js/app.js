@@ -67,7 +67,7 @@ $(function() {
 		}
 
 		this.performClick = function(e) {
-			var elementToMoveIndex = $(e.target).index(),
+			var elementToMoveIndex = $(e.target).parent().index(),
 				zeroIndex = this.currentState.indexOf(0);
 
 			this.currentState[zeroIndex] = this.currentState[elementToMoveIndex];
@@ -115,7 +115,7 @@ $(function() {
 
 			var that = this;
 
-			$('.puzzle-area .ready').on('click', function(e) {
+			$('.puzzle-area .ready i').on('click', function(e) {
 
 				that.performClick(e);
 
@@ -123,26 +123,26 @@ $(function() {
 
 		}
 
-		this.formatTimer = function(seconds) {
-				var h = Math.floor(seconds / 3600),
-						m = Math.floor(seconds / 60) % 60,
-						s = seconds % 60;
-				if (h < 10) h = "0" + h;
-				if (m < 10) m = "0" + m;
-				if (s < 10) s = "0" + s;
-				return h + ":" + m + ":" + s;
-		}
-		var count = 0;
-		var counter = setInterval(this.startTimer, 1000);
+		// this.formatTimer = function(seconds) {
+		// 		var h = Math.floor(seconds / 3600),
+		// 				m = Math.floor(seconds / 60) % 60,
+		// 				s = seconds % 60;
+		// 		if (h < 10) h = "0" + h;
+		// 		if (m < 10) m = "0" + m;
+		// 		if (s < 10) s = "0" + s;
+		// 		return h + ":" + m + ":" + s;
+		// }
+		// var count = 0;
+		// var counter = setInterval(this.startTimer, 1000);
 
-		this.startTimer = function() {
-				count++;
-				if (count < 0) return clearInterval(counter);
-				$('#timer-value ').html(this.formatTimer(count));
-				document.getElementById('timer').innerHTML = this.formatTimer(count);
-		}
+		// this.startTimer = function() {
+		// 		count++;
+		// 		if (count < 0) return clearInterval(counter);
+		// 		$('#timer-value ').html(this.formatTimer(count));
+		// 		document.getElementById('timer').innerHTML = this.formatTimer(count);
+		// }
 
-		this.startTimer();
+		// this.startTimer();
 
 	};
 
