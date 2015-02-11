@@ -148,7 +148,10 @@ $(function() {
 
 	var game = new PuzzleGame();
 
-	game.init();
+	$('.start-container').click(function(){
+		$(this).fadeOut();
+		game.init();
+	})
 
 	// function formatTime(seconds) {
 	//     var h = Math.floor(seconds / 3600),
