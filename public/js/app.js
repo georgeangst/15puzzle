@@ -180,7 +180,8 @@ $(function() {
 	var game = new PuzzleGame();
 
 	$('.start-container').click(function(){
-		$(this).fadeOut(100);
+		$(this).addClass('hidden');
+		$('.game-container').removeClass('hidden');
 		game.init();
 	})
 

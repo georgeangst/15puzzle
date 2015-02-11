@@ -7,9 +7,11 @@ html {
   width: 100%;
   height: 100%;
 }
+.puzzle-wrapper .hidden {
+  display: none;
+}
 .puzzle-wrapper .start-container,
 .puzzle-wrapper .win-container {
-  position: absolute;
   width: 100%;
   height: 100%;
   background-color: #fff;
@@ -25,15 +27,12 @@ html {
 .puzzle-wrapper .win-container .title {
   font-size: 100px;
 }
-.puzzle-wrapper .win-container {
-  display: none;
-}
 .puzzle-wrapper .win-container .final-info {
   font-size: 30px;
   line-height: 40px;
 }
 .puzzle-wrapper .game-container {
-  padding: 70px 0;
+  padding: 70px 15px;
   margin: 0 auto;
   width: 445px;
   font-family: arial, sans-serif;
@@ -108,8 +107,8 @@ html {
   font-size: 18px;
 }
 .puzzle-wrapper .puzzle-timer {
-  left: 0;
+  left: 15px;
 }
 .puzzle-wrapper .puzzle-moves {
-  right: 0;
+  right: 15px;
 }
